@@ -1,11 +1,11 @@
 import streamlit as st
 import openai
 import pandas as pd
-import faiss
 import numpy as np
 from docx import Document
 import os
 from dotenv import load_dotenv
+from sklearn.neighbors import NearestNeighbors
 
 # Load environment variables from .env file
 load_dotenv()
@@ -15,7 +15,6 @@ OPENAI_API_KEY = os.getenv('OPEN_API_KEY')
 
 # Load your OpenAI API key
 openai.api_key = OPENAI_API_KEY
-
 
 
 @st.cache_data
@@ -43,7 +42,7 @@ def generate_embeddings(text, model="text-embedding-ada-002"):
     )
     return response.data[0].embedding
 
-# Create FAISS index for the text sections
+# Create NearestNeighbors index for the text sections
 
 
 @st.cache_data
@@ -53,22 +52,22 @@ def create_embeddings_index(texts):
         embeddings.append(generate_embeddings(text))
 
     embeddings_np = np.array(embeddings).astype("float32")
-    dimension = embeddings_np.shape[1]
-    index = faiss.IndexFlatL2(dimension)
-    index.add(embeddings_np)
+    nn_model = NearestNeighbors(n_neighbors=5, metric='euclidean')
+    nn_model.fit(embeddings_np)
 
-    return index, embeddings_np
+    return nn_model, embeddings_np
 
 # Search function to find the most relevant section
 
 
-def search_query(query, index, texts, embeddings, model="text-embedding-ada-002", top_k=5):
+def search_query(query, nn_model, texts, embeddings, model="text-embedding-ada-002", top_k=5):
     # Generate the query embedding
     query_embedding = generate_embeddings(query, model=model)
     query_embedding_np = np.array([query_embedding]).astype("float32")
 
     # Search for the top k most relevant sections
-    distances, indices = index.search(query_embedding_np, k=top_k)
+    distances, indices = nn_model.kneighbors(
+        query_embedding_np, n_neighbors=top_k)
 
     # Retrieve the top k sections and their distances
     results = []
@@ -83,7 +82,6 @@ def search_query(query, index, texts, embeddings, model="text-embedding-ada-002"
 # Streamlit UI
 
 
-# Streamlit UI
 def main():
     st.title("Second Mountain Knowledge Base")
     st.write("This tool allows you to query information about second mountain across blockchains and past cycles.")
@@ -94,8 +92,8 @@ def main():
     for doc in documents:
         sections.extend(doc.split("\n\n"))  # Split documents into sections
 
-    # Create FAISS index
-    index, embeddings = create_embeddings_index(sections)
+    # Create NearestNeighbors index
+    nn_model, embeddings = create_embeddings_index(sections)
 
     # User query input
     query = st.text_input("Enter your query here",
@@ -106,7 +104,7 @@ def main():
         if query:
             top_k = 5  # Number of top results to display
             results = search_query(
-                query, index, sections, embeddings, top_k=top_k)
+                query, nn_model, sections, embeddings, top_k=top_k)
 
             st.subheader(f"Top {top_k} Matching Sections:")
             for i, (result, distance) in enumerate(results, start=1):
