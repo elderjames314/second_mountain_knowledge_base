@@ -1,0 +1,77 @@
+Tracking Flow of Capital across Chains
+Crypto in its current state is a reflexive asset class, meaning capital tends to flow toward projects gaining the most attention. To capitalize on the most promising opportunities within this space, we need a model to track capital movement across different blockchains.
+
+This research aims to identify key metrics that can be used to effectively track capital flow across various blockchain networks. By doing so, we can gain valuable insights to help us identify potential investment opportunities.
+
+
+Total Value Locked (TVL %CHG):
+
+Description: TVL measures the total value of digital assets deposited ("locked" or "staked") in DeFi protocols or decentralized applications (dApps) built on a specific blockchain. It reflects the level of user engagement and the overall DeFi ecosystem's health on that chain.
+
+Interpretation: A rising TVL suggests growing user confidence and capital inflow into the blockchain's DeFi space. Conversely, a declining TVL might indicate a bearish signal, potentially due to decreasing user activity or migration to other chains.
+
+Hypothesis:
+
+
+Daily Active Addresses (DAA %CHG):
+
+Description: DAA represents the number of unique on-chain wallet addresses interacting with a blockchain network on a given day. This can include senders, receivers, and those interacting with smart contracts.
+
+Interpretation: A rising DAA suggests growing user activity and potential capital inflow. Conversely, a declining DAA might indicate decreasing user engagement or a potential outflow of capital.
+
+Daily Transactions (%CHG):
+
+Description: This metric measures the total number of unique on-chain interactions with a specific blockchain network on a given day. This can encompass sending and receiving cryptocurrency, interacting with smart contracts, and other blockchain activities.
+
+Interpretation: A rising number of daily transactions suggests increased network activity and could indicate capital flow. Conversely, a decline might suggest decreasing activity or migration to other chains.
+
+DEX Trading Volume (%CHG):
+
+Description: DEX Trading Volume reflects the total USD value of cryptocurrency traded on decentralized exchanges (DEXs) built on a specific blockchain.
+
+Interpretation: A rising DEX trading volume suggests increased activity within the blockchain's DeFi ecosystem and could indicate capital inflow. Conversely, a decline might suggest decreasing user activity or migration to other DEXs.
+
+Market Capitalization (Market Cap %CHG):
+
+Description: Market Cap is the total USD value of all outstanding tokens within a specific blockchain network. It's calculated by multiplying the circulating token supply by the current token price.
+
+Interpretation: A rising Market Cap suggests growing investor interest in the blockchain and its native token. Conversely, a decline might indicate decreasing investor confidence or a potential outflow of capital.
+
+
+Let the Data Speak
+This analysis leverages on chain data from Artemis Terminal to track the performance of the top 5 undervalued chains identified in recent research conducted by Second Mountain.
+
+The aggregated data for this analysis are available here in this Google Sheet.
+
+Next Steps
+Identify top 5 winning chains. 24h/7d/1m/3m 
+Ranking & scoring System. 
+Sentiment/fundamentals
+
+Sector based rebalancing and barbell strategy. 
+
+Bridge Inflow/Outflow:
+This shows the amount of capital moving in and out of the chain through cross-chain bridges, indicating if liquidity is entering or exiting the ecosystem.
+
+Inflow/Outflow:
+Stablecoins are often used as a gateway into other assets. Analyzing stablecoin flows can give insights into upcoming movements of liquidity into the chain’s native tokens or other projects.
+Gas Fees:
+Rising gas fees often indicate increasing activity on a blockchain, signaling more transactions and potentially more liquidity moving into the network.
+Number of New Tokens:
+The number of new Tokens (DeFi platforms, NFT marketplaces, etc.) being deployed on the chain can correlate with liquidity movement, as new projects often attract fresh capital.
+Yield Farming/DeFi TVL Growth:
+Analyzing DeFi TVL (Total Value Locked) across individual DeFi platforms on the chain can show where users are moving their liquidity to farm yields or participate in other DeFi protocols.
+Token Transfers/Activity Volume:
+Track the total volume of token transfers or the growth in activity on the chain. Higher token transfer volumes often suggest increasing demand for the chain’s assets.
+New Wallet Growth:
+Look at the number of new wallets created on the chain over time. Increasing wallet growth generally indicates rising user interest and potential liquidity inflow.
+Market Capitalization Growth:
+While market cap is a traditional measure, a sharp increase relative to trading volumes or other chains can indicate liquidity is flowing into the chain.
+
+Next steps would be to start forward testing Chains and ecosystems with these metrics.
+It should be done on a monthly basis. We would slowly ramp up to doing it on a weekly basis
+The same person should be doing it.
+It Should be documented as part of this flow and process on where to get the relevant information.
+We also need a sheet to track these changes over time as we record them
+This sheet would form as a guide for our weekly portfolio balancing.
+We should have a reporting cycle where the report is generated the day before our scheduled rebalancing.
